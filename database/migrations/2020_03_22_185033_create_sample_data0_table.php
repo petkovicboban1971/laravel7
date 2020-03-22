@@ -15,6 +15,26 @@ class CreateSampleData0Table extends Migration
     {
         Schema::create('sample_data0', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('permissions_id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('e_mail');
+            $table->string('address');
+            $table->string('city');
+            $table->integer('postal_number');
+            $table->string('phone_number', 13);
+            $table->string('country');
+            $table->date('birth_date');
+            $table->string('hometown');
+            $table->string('country_of_birth');
+            $table->string('citizenship');
+            $table->longText('note');
+            $table->string('picture');
+            $table->string('proof_of_payment');
+            $table->string('statement');
+            $table->date('member_from');
+            $table->ipAddress('ip_address');
+            $table->integer('active');
             $table->timestamps();
         });
     }
