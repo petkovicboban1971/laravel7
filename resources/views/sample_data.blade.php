@@ -23,9 +23,10 @@
     <table id="user_table" class="table table-bordered table-striped">
      <thead>
       <tr>
-       <th width="35%">First Name</th>
-          <th width="35%">Last Name</th>
-          <th width="30%">Action</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>E-mail</th>
+        <th>Action</th>
       </tr>
      </thead>
     </table>
@@ -57,6 +58,12 @@
             <label class="control-label col-md-4">Last Name : </label>
             <div class="col-md-8">
              <input type="text" name="last_name" id="last_name" class="form-control" />
+            </div>
+           </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">e-mail : </label>
+            <div class="col-md-8">
+             <input type="text" name="e_mail" id="e_mail" class="form-control" />
             </div>
            </div>
                 <br />
@@ -107,6 +114,10 @@ $(document).ready(function(){
    {
     data: 'last_name',
     name: 'last_name'
+   },
+   {
+    data: 'e_mail',
+    name: 'e_mail'
    },
    {
     data: 'action',
@@ -177,6 +188,7 @@ $(document).ready(function(){
    {
     $('#first_name').val(data.result.first_name);
     $('#last_name').val(data.result.last_name);
+    $('#e_mail').val(data.result.e_mail);
     $('#hidden_id').val(id);
     $('.modal-title').text('Edit Record');
     $('#action_button').val('Edit');

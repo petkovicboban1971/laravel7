@@ -51,7 +51,8 @@ class SampleController extends Controller
     {
         $rules = array(
             'first_name'    =>  'required',
-            'last_name'     =>  'required'
+            'last_name'     =>  'required',
+            'e_mail'     =>  'required'
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -63,7 +64,8 @@ class SampleController extends Controller
 
         $form_data = array(
             'first_name'        =>  $request->first_name,
-            'last_name'         =>  $request->last_name
+            'last_name'         =>  $request->last_name,
+            'e_mail'         =>  $request->e_mail
         );
 
         Sample_data::create($form_data);
@@ -109,7 +111,8 @@ class SampleController extends Controller
     {
         $rules = array(
             'first_name'        =>  'required',
-            'last_name'         =>  'required'
+            'last_name'        =>  'required',
+            'e_mail'         =>  'required'
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -121,7 +124,8 @@ class SampleController extends Controller
 
         $form_data = array(
             'first_name'    =>  $request->first_name,
-            'last_name'     =>  $request->last_name
+            'last_name'     =>  $request->last_name,
+            'e_mail'     =>  $request->e_mail
         );
 
         Sample_data::whereId($request->hidden_id)->update($form_data);

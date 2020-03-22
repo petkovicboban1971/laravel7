@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Sample_data extends Model
 {
     protected $fillable = [
-     'first_name', 'last_name'
+     'first_name', 'last_name', 'e_mail'
     ];
 }
