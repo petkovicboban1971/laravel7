@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('sample', 'SampleController');
+
+Route::post('sample/update', 'SampleController@update')->name('sample.update');
+
+Route::get('sample/destroy/{id}', 'SampleController@destroy');
