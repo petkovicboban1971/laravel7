@@ -252,7 +252,8 @@ $(document).ready(function(){
   $.ajax({
    url: action_url,
    method:"POST",
-   data:$(this).serialize(),
+   data:$(this).serialize(),/*
+   data: {"_token": "{{ csrf_token() }}"},*/
    dataType:"json",
    success:function(data)
    {

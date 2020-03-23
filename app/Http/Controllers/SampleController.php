@@ -50,17 +50,17 @@ class SampleController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'first_name'    =>  'required',
-            'last_name'     =>  'required',
-            'e_mail'     =>  'required',
-            'address'     =>  'required',
-            'city'     =>  'required',
-            'country'     =>  'required',
+            'first_name'        =>  'required',
+            'last_name'         =>  'required',
+            'e_mail'            =>  'required',
+            'address'           =>  'required',
+            'city'              =>  'required',
+            'country'           =>  'required',
             'postal_number'     =>  'required',
-            'phone_number'     =>  'required',
-            'birth_date'     =>  'required',
-            'hometown'     =>  'required',
-            'coutry_of_birth'     =>  'required'
+            'phone_number'      =>  'required',
+            /*'birth_date'        =>  'required',
+            'hometown'          =>  'required',
+            'coutry_of_birth'   =>  'required'*/
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -73,15 +73,15 @@ class SampleController extends Controller
         $form_data = array(
             'first_name'        =>  $request->first_name,
             'last_name'         =>  $request->last_name,
-            'e_mail'         =>  $request->e_mail,
-            'address'         =>  $request->address,
-            'city'         =>  $request->city,
-            'country'         =>  $request->country,
-            'postal_number'         =>  $request->postal_number,
-            'phone_number'         =>  $request->phone_number,
-            'birth_date'         =>  $request->birth_date,
-            'hometown'         =>  $request->hometown,
-            'coutry_of_birth'         =>  $request->coutry_of_birth
+            'e_mail'            =>  $request->e_mail,
+            'address'           =>  $request->address,
+            'city'              =>  $request->city,
+            'country'           =>  $request->country,
+            'postal_number'     =>  $request->postal_number,
+            'phone_number'      =>  $request->phone_number,
+            'birth_date'        =>  $request->birth_date,
+            'hometown'          =>  $request->hometown,
+            'coutry_of_birth'   =>  $request->coutry_of_birth
         );
 
         Sample_data::create($form_data);
@@ -127,16 +127,16 @@ class SampleController extends Controller
     {
         $rules = array(
             'first_name'        =>  'required',
-            'last_name'        =>  'required',
-            'e_mail'         =>  'required',
-            'address'         =>  'required',
-            'city'         =>  'required',
-            'country'         =>  'required',
-            'postal_number'         =>  'required',
-            'phone_number'         =>  'required',
-            'birth_date'         =>  'required',
-            'hometown'         =>  'required',
-            'coutry_of_birth'         =>  'required'
+            'last_name'         =>  'required',
+            'e_mail'            =>  'required',
+            'address'           =>  'required',
+            'city'              =>  'required',
+            'country'           =>  'required',
+            'postal_number'     =>  'required',
+            'phone_number'      =>  'required'
+            /*'birth_date'        =>  'required',
+            'hometown'          =>  'required',
+            'coutry_of_birth'   =>  'required'*/
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -147,17 +147,17 @@ class SampleController extends Controller
         }
 
         $form_data = array(
-            'first_name'    =>  $request->first_name,
-            'last_name'     =>  $request->last_name,
-            'e_mail'     =>  $request->e_mail,
-            'address'     =>  $request->address,
-            'city'     =>  $request->city,
-            'country'     =>  $request->country,
+            'first_name'        =>  $request->first_name,
+            'last_name'         =>  $request->last_name,
+            'e_mail'            =>  $request->e_mail,
+            'address'           =>  $request->address,
+            'city'              =>  $request->city,
+            'country'           =>  $request->country,
             'postal_number'     =>  $request->postal_number,
-            'phone_number'     =>  $request->phone_number,
-            'birth_date'     =>  $request->birth_date,
-            'hometown'     =>  $request->hometown,
-            'coutry_of_birth'     =>  $request->coutry_of_birth
+            'phone_number'      =>  $request->phone_number,
+            'birth_date'        =>  $request->birth_date,
+            'hometown'          =>  $request->hometown,
+            'coutry_of_birth'   =>  $request->coutry_of_birth
         );
 
         Sample_data::whereId($request->hidden_id)->update($form_data);
