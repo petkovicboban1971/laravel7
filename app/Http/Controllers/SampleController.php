@@ -21,8 +21,8 @@ class SampleController extends Controller
             $data = Sample_data::latest()->get();
             return DataTables::of($data)
                     ->addColumn('action', function($data){
-                        $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
-                        $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
+                        $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Uredi</button>';
+                        $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Obriši</button>';
                         return $button;
                     })
                     ->rawColumns(['action'])
@@ -52,7 +52,15 @@ class SampleController extends Controller
         $rules = array(
             'first_name'    =>  'required',
             'last_name'     =>  'required',
-            'e_mail'     =>  'required'
+            'e_mail'     =>  'required',
+            'address'     =>  'required',
+            'city'     =>  'required',
+            'country'     =>  'required',
+            'postal_number'     =>  'required',
+            'phone_number'     =>  'required',
+            'birth_date'     =>  'required',
+            'hometown'     =>  'required',
+            'coutry_of_birth'     =>  'required'
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -65,12 +73,20 @@ class SampleController extends Controller
         $form_data = array(
             'first_name'        =>  $request->first_name,
             'last_name'         =>  $request->last_name,
-            'e_mail'         =>  $request->e_mail
+            'e_mail'         =>  $request->e_mail,
+            'address'         =>  $request->address,
+            'city'         =>  $request->city,
+            'country'         =>  $request->country,
+            'postal_number'         =>  $request->postal_number,
+            'phone_number'         =>  $request->phone_number,
+            'birth_date'         =>  $request->birth_date,
+            'hometown'         =>  $request->hometown,
+            'coutry_of_birth'         =>  $request->coutry_of_birth
         );
 
         Sample_data::create($form_data);
 
-        return response()->json(['success' => 'Data Added successfully.']);
+        return response()->json(['success' => 'Unos novog člana izvršen.']);
 
     }
 
@@ -112,7 +128,15 @@ class SampleController extends Controller
         $rules = array(
             'first_name'        =>  'required',
             'last_name'        =>  'required',
-            'e_mail'         =>  'required'
+            'e_mail'         =>  'required',
+            'address'         =>  'required',
+            'city'         =>  'required',
+            'country'         =>  'required',
+            'postal_number'         =>  'required',
+            'phone_number'         =>  'required',
+            'birth_date'         =>  'required',
+            'hometown'         =>  'required',
+            'coutry_of_birth'         =>  'required'
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -125,12 +149,20 @@ class SampleController extends Controller
         $form_data = array(
             'first_name'    =>  $request->first_name,
             'last_name'     =>  $request->last_name,
-            'e_mail'     =>  $request->e_mail
+            'e_mail'     =>  $request->e_mail,
+            'address'     =>  $request->address,
+            'city'     =>  $request->city,
+            'country'     =>  $request->country,
+            'postal_number'     =>  $request->postal_number,
+            'phone_number'     =>  $request->phone_number,
+            'birth_date'     =>  $request->birth_date,
+            'hometown'     =>  $request->hometown,
+            'coutry_of_birth'     =>  $request->coutry_of_birth
         );
 
         Sample_data::whereId($request->hidden_id)->update($form_data);
 
-        return response()->json(['success' => 'Data is successfully updated']);
+        return response()->json(['success' => 'Podaci uspešno uređeni.']);
 
     }
 
