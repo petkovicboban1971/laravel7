@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Permissions extends Model
 {
-    protected $fillable = [];
+    protected $guarded = [];
 
-    public function Permissions(){
+    public function Sample_data(){
 
-    	return $this->hasMany('App\Sample_data0')->withDefault();
+    	return $this->hasMany(Sample_data::class);
 
     }
 }

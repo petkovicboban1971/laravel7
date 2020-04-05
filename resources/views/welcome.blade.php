@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>DSSP "Zdravica" - Niš</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -12,7 +12,10 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-image: url('images/StariLogo.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 50%;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -68,17 +71,18 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
+                       <!--  <a href="{{ url('/home') }}">Home</a> -->
                         <a href="{{ route('login') }}">Login</a>
-
+                    @else
+                        {{ url('/home') }}
+<!--                
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
-                        @endif
+                        @endif -->
                     @endauth
                 </div>
             @endif
-
+<!-- 
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
@@ -94,7 +98,7 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </body>
 </html>

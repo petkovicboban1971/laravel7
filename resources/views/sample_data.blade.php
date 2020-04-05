@@ -9,11 +9,12 @@
   <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>  
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
-    #zaglavlje, td{
-      width: 100px !important;
-      word-break: normal;
+    #zaglavlje{
+      word-wrap: break-word;
       font-size: 9pt;
+      width: auto !important;
     }
     #user_table{
       font-size: 9pt;
@@ -21,10 +22,8 @@
   </style>
  </head>
  <body>
-  <div class="container">    
-     <br />
+  <div class="container"> 
      <h3 align="center">Baza podataka članova DSSP "Zdravica" - Niš</h3>
-     <br />
      <div align="right">
       <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm">Novi član / Nov član</button>
      </div>
@@ -33,18 +32,25 @@
     <table id="user_table" class="table table-bordered table-striped">
      <thead>
       <tr>
-        <th id="zaglavlje">Ime</th>
-        <th id="zaglavlje">Prezime Priimek</th>
+        <th style="width: 50px !important;">Detalji</th>
+        <th id="zaglavlje">Ime i/in prezime/priimek</th><!-- 
+        <th id="zaglavlje">Prezime/ Priimek</th> -->
         <th id="zaglavlje">E-mail</th>
-        <th id="zaglavlje">Adresa Naslov</th>
-        <th id="zaglavlje">Grad Mesto</th>
-        <th id="zaglavlje">Pošt.br Pošt.štev</th>
-        <th id="zaglavlje">Tel.br Tel.štev</th>
+        <th id="zaglavlje">Tel.broj/ Tel.štev.</th>
+        <th id="zaglavlje">Adresa/Naslov</th>
+        <th id="zaglavlje">Grad/Mesto</th><!-- 
+        <th id="zaglavlje">Pošt.broj/ Pošt.štev.</th> -->
         <th id="zaglavlje">Država</th>
-        <th id="zaglavlje">Datum rođenja</th>
-        <th id="zaglavlje">Rodni grad</th>
-        <th id="zaglavlje">Država rođenja/rojstva</th>
-        <th style="width: 120px !important;">Action</th>
+       <!--  <th id="zaglavlje">Dat.&nbsp;rođenja/ Dat.&nbsp;rojstva</th>
+        <th id="zaglavlje">Rodni&nbsp;grad/ Rojstno&nbsp;mesto</th>
+        <th id="zaglavlje">Država&nbsp;rođenja/ Država&nbsp;rojstva</th>
+        <th id="zaglavlje">Državljanstvo</th>
+        <th id="zaglavlje">Napomena/ Pripomba</th>
+        <th id="zaglavlje">Slika</th>
+        <th id="zaglavlje">Uplatnica</th>
+        <th id="zaglavlje">Član&nbsp;od</th>
+        <th id="zaglavlje">Uloga/Vloga</th> -->
+        <th style="width: 50px !important;">Opcije</th>
       </tr>
      </thead>
     </table>
@@ -132,6 +138,36 @@
              <input type="text" name="coutry_of_birth" id="coutry_of_birth" class="form-control" />
             </div>
            </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">Državljanstvo : </label>
+            <div class="col-md-8">
+             <input type="text" name="citizenship" id="citizenship" class="form-control" />
+            </div>
+           </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">Napomena / Pribomba : </label>
+            <div class="col-md-8">
+             <input type="text" name="note" id="note" class="form-control" />
+            </div>
+           </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">Napomena / Pribomba : </label>
+            <div class="col-md-8">
+             <input type="text" name="picture" id="picture" class="form-control" />
+            </div>
+           </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">Napomena / Pribomba : </label>
+            <div class="col-md-8">
+             <input type="text" name="proof_of_payment" id="proof_of_payment" class="form-control" />
+            </div>
+           </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">Član od : </label>
+            <div class="col-md-8">
+             <input type="text" name="proof_of_payment" id="proof_of_payment" class="form-control" />
+            </div>
+           </div>
           </div>
             <br />
             <div class="form-group" align="center">
@@ -150,7 +186,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2 class="modal-title">Potvrda</h2>
+                <h2 class="modal-title">Brisanje člana</h2>
             </div>
             <div class="modal-body">
                 <h4 align="center" style="margin:0;">Da li zaista želite da obrišete člana? /  <br />Ali ste prepričani, da želite izbrisati člana?</h4>
@@ -175,16 +211,25 @@ $(document).ready(function(){
   },
   columns: [
    {
-    data: 'first_name',
-    name: 'first_name'
+    data: 'details',
+    name: 'details', 
+    orderable: false
    },
    {
+    data: 'last_first_name',
+    name: 'last_first_name'
+   },
+   /*{
     data: 'last_name',
     name: 'last_name'
-   },
+   },*/
    {
     data: 'e_mail',
     name: 'e_mail'
+   },
+   {
+    data: 'phone_number',
+    name: 'phone_number'
    },
    {
     data: 'address',
@@ -195,16 +240,12 @@ $(document).ready(function(){
     name: 'city'
    },
    {
-    data: 'postal_number',
-    name: 'postal_number'
-   },
-   {
-    data: 'phone_number',
-    name: 'phone_number'
-   },
-   {
     data: 'country',
     name: 'country'
+   },
+   /*{
+    data: 'postal_number',
+    name: 'postal_number'
    },
    {
     data: 'birth_date',
@@ -218,6 +259,30 @@ $(document).ready(function(){
     data: 'coutry_of_birth',
     name: 'coutry_of_birth'
    },
+   {
+    data: 'citizenship',
+    name: 'citizenship'
+   },
+   {
+    data: 'note',
+    name: 'note'
+   },
+   {
+    data: 'picture',
+    name: 'picture'
+   },
+   {
+    data: 'proof_of_payment',
+    name: 'proof_of_payment'
+   },
+   {
+    data: 'member_from',
+    name: 'member_from'
+   },
+   {
+    data: 'permissions_id',
+    name: 'permissions_id'
+   },*/
    {
     data: 'action',
     name: 'action',
@@ -286,6 +351,7 @@ $(document).ready(function(){
    dataType:"json",
    success:function(data)
    {
+    $('#action').val('Uredi');
     $('#first_name').val(data.result.first_name);
     $('#last_name').val(data.result.last_name);
     $('#e_mail').val(data.result.e_mail);
@@ -297,10 +363,15 @@ $(document).ready(function(){
     $('#birth_date').val(data.result.birth_date);
     $('#hometown').val(data.result.hometown);
     $('#coutry_of_birth').val(data.result.coutry_of_birth);
+    $('#citizenship').val(data.result.citizenship);
+    $('#note').val(data.result.note);
+    $('#picture').val(data.result.picture);
+    $('#proof_of_payment').val(data.result.proof_of_payment);
+    $('#member_from').val(data.result.member_from);
+    $('#permissions_id').val(data.result.permissions_id);
     $('#hidden_id').val(id);
     $('.modal-title').text('Uređivanje podataka o članu');
     $('#action_button').val('Uredi');
-    $('#action').val('Uredi');
     $('#formModal').modal('show');
    }
   })
