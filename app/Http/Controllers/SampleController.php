@@ -105,9 +105,11 @@ class SampleController extends Controller
      * @param  \App\Sample_data  $sample_data
      * @return \Illuminate\Http\Response
      */
-    public function show(Sample_data $sample_data)
+    public function show($sample_data)
     {
-        //
+        $data = Sample_data::findOrFail($sample_data);
+        $data->birth_date = date_format(date_create($data->birth_date), "d.m.Y.");
+        return response()->json(['result' => $data]);
     }
 
     /**

@@ -61,6 +61,121 @@
  </body>
 </html>
 
+<div id="detailsModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Detaljan pregled podataka</h4>
+      </div>
+      <div class="modal-body">
+        <span id="form_result"></span>
+          <div class="modal-body">
+           <span id="form_result"></span>
+         
+           <div class="form-group">
+            <label class="control-label col-md-4" >Ime: </label>
+            <div class="col-md-8">
+             <div id="first_name"></div>
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Prezime/Priimek: </label>
+            <div class="col-md-8">
+             <div id="last_name"></div>
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">e-mail: </label>
+            <div class="col-md-8">
+             <div id="e_mail"></div>
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Adresa/Naslov: </label>
+            <div class="col-md-8">
+             <div id="address"></div>
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Grad/Mesto: </label>
+            <div class="col-md-8">
+             <div id="city"></div>
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Država: </label>
+            <div class="col-md-8">
+             <div id="country" ></div>
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Pošt.broj/Pošt.številka: </label>
+            <div class="col-md-8">
+             <div id="postal_number"></div>
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Tel.broj/Tel.številka: </label>
+            <div class="col-md-8">
+             <div id="phone_number"></div>
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Datum rođenja/rojstva: </label>
+            <div class="col-md-8">
+             <div id="birth_date"></div>
+            </div>
+           </div><br><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Grad rođenja/Mesto rojstva: </label>
+            <div class="col-md-8">
+             <div id="hometown"></div>
+            </div>
+           </div><br><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Država rođenja/rojstva: </label>
+            <div class="col-md-8">
+             <div id="coutry_of_birth"></div>
+            </div>
+           </div><br><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Državljanstvo: </label>
+            <div class="col-md-8">
+             <div id="citizenship"></div>
+            </div>
+           </div><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Napomena / Pribomba: </label>
+            <div class="col-md-8">
+             <div id="note"></div>
+            </div>
+           </div><br><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Napomena / Pribomba: </label>
+            <div class="col-md-8">
+             <div id="picture"></div>
+            </div>
+           </div><br><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Napomena / Pribomba: </label>
+            <div class="col-md-8">
+             <div id="proof_of_payment"></div>
+            </div>
+           </div><br><br>
+           <div class="form-group">
+            <label class="control-label col-md-4">Član od: </label>
+            <div class="col-md-8">
+             <div id="proof_of_payment"></div>
+            </div>
+           </div><br>
+          </div> 
+          <div id="picture"></div> 
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="formModal" class="modal fade" role="dialog">
  <div class="modal-dialog">
   <div class="modal-content">
@@ -342,6 +457,42 @@ $(document).ready(function(){
    }
   });
  });
+
+ $(document).on('click', '.details', function(){
+  var id = $(this).attr('id');
+  $('#form_result').html('');
+  $.ajax({
+    url :"sample/"+id,
+    dataType:"json",
+    success:function(data)
+    {
+      /*$('#action').val('Uredi');*/
+      $('#first_name').html(data.result.first_name);
+      $('#last_name').html(data.result.last_name);
+      $('#e_mail').html(data.result.e_mail);
+      $('#address').html(data.result.address);
+      $('#city').html(data.result.city);
+      $('#postal_number').html(data.result.postal_number);
+      $('#phone_number').html(data.result.phone_number);
+      $('#country').html(data.result.country);
+      $('#birth_date').html(data.result.birth_date);
+      $('#hometown').html(data.result.hometown);
+      $('#coutry_of_birth').html(data.result.coutry_of_birth);
+      $('#citizenship').html(data.result.citizenship);
+      $('#note').html(data.result.note);
+      $('#picture').html(data.result.picture);
+      $('#proof_of_payment').html(data.result.proof_of_payment);
+      $('#member_from').html(data.result.member_from);
+      $('#permissions_id').html(data.result.permissions_id);
+      $('#hidden_id').html(id);
+      $('.modal-title').text('Detaljan prikaz podataka');/*
+      $('#action_button').val('Uredi');*/
+      $('#detailsModal').modal('show'); 
+    }
+  })
+
+ });
+
 
  $(document).on('click', '.edit', function(){
   var id = $(this).attr('id');
