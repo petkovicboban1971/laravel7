@@ -26,7 +26,9 @@
     }
     #picture2 img{
       width: 250px;
-      border: 1px solid green;
+      border: 1px solid white;      
+      box-shadow: 5px 5px;
+      border-radius:5px; 
     }
     #rodjendani{
       background-color: #ffe6e6; 
