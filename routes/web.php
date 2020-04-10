@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +20,7 @@ Route::get('/admin', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('sample_data');
-});
+Route::get('/home', 'HomeController@home');
 
 Auth::routes();
 /*

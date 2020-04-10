@@ -28,10 +28,28 @@
       width: 250px;
       border: 1px solid green;
     }
+    #rodjendani{
+      background-color: #ffe6e6; 
+      border: 2px solid red;
+      margin: 10px 0 0 10px;
+      padding: 3px;
+      width: 25%;
+    }
   </style>
  </head>
  <body>
-  <div class="container"> 
+  @if($rodjendani)
+    <div id="rodjendani"><b>Današnji rođendani / Današnji rojstni dnevi:</b>
+      <br>
+      @for($i=0; $i < count($rodjendani); $i++)
+        {{ $rodjendani[$i]->first_name }}
+        {{ $rodjendani[$i]->last_name }} -
+        <?php echo date('Y') - date_format(date_create($rodjendani[$i]->birth_date), 'Y') ." godina"; ?>
+        <br>
+      @endfor
+    </div>
+  @endif
+  <div class="container" style="width: 65% !important"> 
      <h3 align="center">Baza podataka članova DSSP "Zdravica" - Niš</h3>
      <div align="right">
       <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm">Novi član / Nov član</button>

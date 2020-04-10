@@ -15,7 +15,7 @@ class SampleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
+    {            
         if($request->ajax())
         {
             $data = Sample_data::latest()->get();
